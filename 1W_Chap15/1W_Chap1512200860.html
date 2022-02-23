@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 1W_Chap1512200860 이유림</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<h1>Homework 1W_Chap1512200860 이유림</h1>
+<table>
+    <tbody>
+        <tr>
+	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
+            <td><textarea id="inputTextToSave" cols="80" rows="10">
+#나, 이유림은(는) 질문에 스스로 해결했음을 선언합니다.
+#I, 이유림, declare that I have answered the questions myself.
+1: 
+2: 
+3: 
+4: 
+5: 
+6: 
+7: 
+8: </textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+	<input type="button" onclick="javascript:display_Q0();" value="Q-1" /> &emsp;
+	<input type="button" onclick="javascript:display_Q1();" value="Q-2" /> &emsp;
+	<input type="button" onclick="javascript:display_Q2();" value="Q-3" /> &emsp;
+	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
+	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
+	<input type="button" onclick="javascript:display_Q5();" value="Q-6" /> &emsp;
+	<input type="button" onclick="javascript:display_Q6();" value="Q-7" /> &emsp;
+	<input type="button" onclick="javascript:display_Q7();" value="Q-8" /> &emsp;
+	<hr> <div id="Qs"></div>
+    <canvas id="canvas" width="500" height="400">
+</body>
+</head>
+
+<script type="text/javascript">
+function saveTextAsFile() {
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "1W_Chap1512200860.txt"
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+</script>
+<script type="application/javascript">
+function line_arrow(context, fromx, fromy, tox, toy, color, end) {
+    var headlen = 7;
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.beginPath();
+    context.strokeStyle = color;
+    if (end == "last"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+    else if (end=="both"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+}
+    else if (end == "first"){
+    context.moveTo(tox, toy);
+    context.lineTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+    }
+    context.stroke();
+}
+</script>
+
+<script type="application/javascript">
+function display_Q0() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 선전하밀도가 λ=1.0 μC/m인 무한히 긴 도선이 y-축을 따라 놓여 있고 원점에서부터 양의 방향으로 20.0 m 떨어진 x-축 위에 전하량이 10.0 μC인 점전하가 놓여있다. 원점에서부터 10.0 m 떨어져 있는 z-축 위의 점에서 전기장의 크기 [N/C]를 구하여라. 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① 1590<br>② 1690<br>③ 1790<br>④ 1890<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q1() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. 일직선상에 세 점전하가 간격 d를 두고 놓여 있다. 전하량은 순서대로 2q, -1q, -1q이다. 왼쪽 전하 2q에 작용하는 힘의 크기를 F라 하면, 가운데 전하 -1q에 작용하는 힘의 크기는 F의 몇 배인가?<br>① 1.40<br>② 1.30<br>③ 1.10<br>④ 1.20<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q2() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 균일한 전기장 3.0×10⁴ N/C 내에서 전자를 가만히 놓았다. 전자가 5.0 cm를 진행했을 때, 운동에너지는 몇 10⁻¹⁸ J 인가? 전자 질량=9.11×10⁻³¹ kg, 전하량=1.60×10⁻¹⁹ C.<br>① 220<br>② 230<br>③ 240<br>④ 250<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 두 점전하의 전하량의 합이 +12.0 μC이고 이 둘은 서로 4.0 m 떨어져 있다. 두 점전하 사이에는 1 mN의 인력이 작용한다면, 두 점전하 중 전하량의 크기가 큰 것은 몇 μC인가? 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① 11.1<br>② 12.1<br>③ 13.1<br>④ 14.1<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q4() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. 질량이 각각 2×10²⁴ kg, 8×10³⁰ kg인 두 물체가 있다. 만약에 두 물체가 전기적으로 중성이 아니고 크기와 부호가 동일한 전하량을 띠고 있다고 가정한다면, 이 둘 사이의 만유인력을 상쇄시키는 데 필요한 각 전하량의 크기는 몇 10¹⁷ C이어야 하는가? G=6.67×10⁻¹¹ m³/s²⋅kg. 1/(4πε₀ )=9×10⁹ N⋅m²/C².<br>① 3.14<br>② 3.34<br>③ 3.44<br>④ 3.24<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q5() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">6. 전하량이 60.0 μC인 점전하가 원점에서부터 (3 î + 8.0 ĵ) m 위치에 놓여 있다. 원점에서부터 (20.0 î + 6 ĵ) m 만큼 떨어진 곳에 이 점전하가 만드는 전기장의 크기를 구하여라. 1/(4πε₀ )=9×10⁹ N⋅m²/C².<br>① 1840<br>② 1740<br>③ 1640<br>④ 1540<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q6() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">7. 아래 그림과 같이 y-축 상의 두 점전하의 수직이등분 선상에 놓여 있는 점 P에서 전기장의 방향은? <br> <br>① +x<br>② -x<br>③ +y<br>④ -y<br>⑤ None of the above <br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+line_arrow(ctx, 13, 100, 193, 100, "black", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("y", 30, 22);
+line_arrow(ctx, 33, 170, 33, 30, "black", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("x", 198, 102);
+ctx.beginPath();
+ctx.ellipse(33,50,4, 4, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="red";
+ctx.fillStyle="red";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(33,150,4, 4, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="red";
+ctx.fillStyle="red";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(163,100,2, 2, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="black";
+ctx.fillStyle="black";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("-q", 39, 52);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("-q", 39, 152);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("P", 160, 90);
+}
+
+function display_Q7() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">8. 아래 그림과 같이 연직선과 θ=20°의 각을 이루고 밑에서 맞닿아 있는 두 경사면에 질량 m=9 kg이며 전하 q로 대전된 동일한 두 물체가 수평거리 x=7.6 cm로 평형을 이루고 있다. 물체의 전하량 q [μC]를 구하시오. g=10 m/s². 1/(4πε₀ )=9×10⁹ N⋅m²/C². <br><br>① 32.6<br>② 12.6<br>③ 92.6<br>④ 22.6<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.moveTo(30,30);
+ctx.lineTo(40,30);
+ctx.lineTo(90,190);
+ctx.lineTo(80,190);
+ctx.lineTo(30,30);
+ctx.fillStyle="goldenrod";
+ctx.fill();
+ctx.beginPath();
+ctx.moveTo(150,30);
+ctx.lineTo(140,30);
+ctx.lineTo(90,190);
+ctx.lineTo(100,190);
+ctx.lineTo(150,30);
+ctx.fillStyle="goldenrod";
+ctx.fill();
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.setLineDash([5,2]);
+ctx.moveTo(90,100);
+ctx.lineTo(90,190);
+ctx.stroke();
+ctx.setLineDash([]);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("θ", 76, 138);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("θ", 94, 138);
+ctx.beginPath();
+ctx.ellipse(129,50,5, 5, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="red";
+ctx.fillStyle="red";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(51,50,5, 5, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="red";
+ctx.fillStyle="red";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("x", 87, 32);
+line_arrow(ctx, 51, 40, 129, 40, "black", "both");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("q", 56, 66);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("q", 116, 66);
+line_arrow(ctx, 140, 80, 140, 120, "black", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("g", 135, 132);
+}
+
+</script>\n</body>\n</html>
