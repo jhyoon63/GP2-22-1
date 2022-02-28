@@ -9,7 +9,7 @@
     <tbody>
         <tr>
 	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
-            <td><textarea id="inputTextToSave" cols="80" rows="10">
+            <td><textarea id="inputTextToSave" cols="80" rows="8">
 #나, 사석현은(는) 질문에 스스로 해결했음을 선언합니다.
 #I, 사석현, declare that I have answered the questions myself.
 1: 
@@ -17,9 +17,7 @@
 3: 
 4: 
 5: 
-6: 
-7: 
-8: </textarea></td>
+6: </textarea></td>
         </tr>
     </tbody>
 </table>
@@ -30,8 +28,6 @@
 	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
 	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
 	<input type="button" onclick="javascript:display_Q5();" value="Q-6" /> &emsp;
-	<input type="button" onclick="javascript:display_Q6();" value="Q-7" /> &emsp;
-	<input type="button" onclick="javascript:display_Q7();" value="Q-8" /> &emsp;
 	<hr> <div id="Qs"></div>
     <canvas id="canvas" width="500" height="400">
 </body>
@@ -99,7 +95,7 @@ function line_arrow(context, fromx, fromy, tox, toy, color, end) {
 <script type="application/javascript">
 function display_Q0() {
     var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">1. 두 점전하의 전하량의 합이 +10.0 μC이고 이 둘은 서로 5.0 m 떨어져 있다. 두 점전하 사이에는 1 mN의 인력이 작용한다면, 두 점전하 중 전하량의 크기가 작은 것은 몇 μC인가? 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① -0.270<br>② -0.870<br>③ -0.170<br>④ -0.970<br>⑤ None of the above<br>⑥ All of the above ';
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 선전하밀도가 λ=0.8 μC/m인 무한히 긴 도선이 y-축을 따라 놓여 있고 원점에서부터 양의 방향으로 15.0 m 떨어진 x-축 위에 전하량이 10.0 μC인 점전하가 놓여있다. 원점에서부터 4.0 m 떨어져 있는 z-축 위의 점에서 전기장의 z-축 성분 [N/C]을 구하여라. 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① 3500<br>② 3600<br>③ 3700<br>④ 3800<br>⑤ None of the above<br>⑥ All of the above ';
     q.innerHTML = s+'</p>';
 
     var cnvs = document.getElementById("canvas");
@@ -110,7 +106,7 @@ function display_Q0() {
 
 function display_Q1() {
     var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">2. 균일한 전기장 5.0 N/C 내에서 전자를 가만히 놓았다. 전자가 7.0 mm를 진행했을 때, 시간은 몇 10⁻⁹ 초 걸렸겠는가? 전자 질량=9.11×10⁻³¹ kg, 전하량=1.60×10⁻¹⁹ C.<br>① 156<br>② 136<br>③ 146<br>④ 126<br>⑤ None of the above<br>⑥ All of the above ';
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. 일직선상에 세 점전하가 간격 d를 두고 놓여 있다. 전하량은 순서대로 1q, 1q, -1q이다. (1/4πε₀ )q²/d²을 F라 하면, 왼쪽 전하 1q에 작용하는 힘의 크기는 F의 몇 배인가?<br>① 0.780<br>② 0.770<br>③ 0.760<br>④ 0.750<br>⑤ None of the above<br>⑥ All of the above ';
     q.innerHTML = s+'</p>';
 
     var cnvs = document.getElementById("canvas");
@@ -121,18 +117,7 @@ function display_Q1() {
 
 function display_Q2() {
     var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">3. 질량이 각각 5×10²⁴ kg, 1×10³⁰ kg인 두 물체가 있다. 만약에 두 물체가 전기적으로 중성이 아니고 크기와 부호가 동일한 전하량을 띠고 있다고 가정한다면, 이 둘 사이의 만유인력을 상쇄시키는 데 필요한 각 전하량의 크기는 몇 10¹⁷ C이어야 하는가? G=6.67×10⁻¹¹ m³/s²⋅kg. 1/(4πε₀ )=9×10⁹ N⋅m²/C².<br>① 3.92<br>② 1.92<br>③ 2.92<br>④ 9.92<br>⑤ None of the above<br>⑥ All of the above ';
-    q.innerHTML = s+'</p>';
-
-    var cnvs = document.getElementById("canvas");
-    var ctx = cnvs.getContext("2d");
-    ctx.clearRect(0,0, cnvs.width, cnvs.height);
-
-}
-
-function display_Q3() {
-    var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">4. 아래 그림과 같이 연직선과 θ의 각을 이루고 밑에서 맞닿아 있는 두 경사면에 질량 m=9 kg이며 전하 q=6.5 μC로 대전된 동일한 두 물체가 수평거리 x=40 mm로 평형을 이루고 있다. 경사면의 각도 θ [°]를 구하시오. g=10 m/s². 1/(4πε₀ )=9×10⁹ N⋅m²/C². <br><br>① 23.7<br>② 20.7<br>③ 21.7<br>④ 22.7<br>⑤ None of the above<br>⑥ All of the above ';
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 아래 그림과 같이 연직선과 θ=40°의 각을 이루고 밑에서 맞닿아 있는 두 경사면에 전하 q=7.6 μC으로 대전된 동일한 두 물체가 수평거리 x=7 cm로 평형을 이루고 있다. 물체의 질량 [kg]을 구하시오. g=10 m/s². 1/(4πε₀ )=9×10⁹ N⋅m²/C². <br><br>① 8.00<br>② 8.90<br>③ 8.80<br>④ 8.70<br>⑤ None of the above<br>⑥ All of the above ';
     q.innerHTML = s+'</p>';
 
     var cnvs = document.getElementById("canvas");
@@ -201,9 +186,20 @@ ctx.fillStyle="black";
 ctx.fillText("g", 135, 132);
 }
 
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 두 점전하의 전하량의 합이 +14.0 μC이고 이 둘은 서로 4.0 m 떨어져 있다. 두 점전하 사이에는 2 mN의 척력이 작용한다면, 두 점전하 중 전하량의 크기가 큰 것은 몇 μC인가? 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① 12.7<br>② 10.7<br>③ 13.7<br>④ 11.7<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
 function display_Q4() {
     var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">5. 선전하밀도가 λ=1.4 μC/m인 무한히 긴 도선이 y-축을 따라 놓여 있고 원점에서부터 음의 방향으로 20.0 m 떨어진 x-축 위에 전하량이 4.0 μC인 점전하가 놓여있다. 원점에서부터 10.0 m 떨어져 있는 z-축 위의 점에서 전기장의 크기 [N/C]를 구하여라. 1/(4πε₀ )= 9×10⁹ N⋅m²/C².<br>① 3550<br>② 2550<br>③ 1550<br>④ 9550<br>⑤ None of the above<br>⑥ All of the above ';
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. 질량이 각각 4×10²⁴ kg, 6×10³⁰ kg인 두 물체가 있다. 만약에 두 물체가 전기적으로 중성이 아니고 크기와 부호가 동일한 전하량을 띠고 있다고 가정한다면, 이 둘 사이의 만유인력을 상쇄시키는 데 필요한 각 전하량의 크기는 몇 10¹⁷ C이어야 하는가? G=6.67×10⁻¹¹ m³/s²⋅kg. 1/(4πε₀ )=9×10⁹ N⋅m²/C².<br>① 3.22<br>② 6.22<br>③ 5.22<br>④ 4.22<br>⑤ None of the above<br>⑥ All of the above ';
     q.innerHTML = s+'</p>';
 
     var cnvs = document.getElementById("canvas");
@@ -214,68 +210,7 @@ function display_Q4() {
 
 function display_Q5() {
     var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">6. 아래 그림과 같이 y-축 상의 두 점전하의 수직이등분 선상에 놓여 있는 점 P에서 전기장의 방향은? <br> <br>① +x<br>② -x<br>③ +y<br>④ -y<br>⑤ None of the above <br>⑥ All of the above ';
-    q.innerHTML = s+'</p>';
-
-    var cnvs = document.getElementById("canvas");
-    var ctx = cnvs.getContext("2d");
-    ctx.clearRect(0,0, cnvs.width, cnvs.height);
-line_arrow(ctx, 13, 100, 193, 100, "black", "last");
-ctx.beginPath();
-ctx.font="italic 18px Palatino Linotype";
-ctx.fillStyle="black";
-ctx.fillText("y", 30, 22);
-line_arrow(ctx, 33, 170, 33, 30, "black", "last");
-ctx.beginPath();
-ctx.font="italic 18px Palatino Linotype";
-ctx.fillStyle="black";
-ctx.fillText("x", 198, 102);
-ctx.beginPath();
-ctx.ellipse(33,50,4, 4, 0, 0, 2*Math.PI, false);
-ctx.strokeStyle="red";
-ctx.fillStyle="red";
-ctx.fill();
-ctx.stroke();
-ctx.beginPath();
-ctx.ellipse(33,150,4, 4, 0, 0, 2*Math.PI, false);
-ctx.strokeStyle="red";
-ctx.fillStyle="red";
-ctx.fill();
-ctx.stroke();
-ctx.beginPath();
-ctx.ellipse(163,100,2, 2, 0, 0, 2*Math.PI, false);
-ctx.strokeStyle="black";
-ctx.fillStyle="black";
-ctx.fill();
-ctx.stroke();
-ctx.beginPath();
-ctx.font="italic 18px Palatino Linotype";
-ctx.fillStyle="black";
-ctx.fillText("-q", 39, 52);
-ctx.beginPath();
-ctx.font="italic 18px Palatino Linotype";
-ctx.fillStyle="black";
-ctx.fillText("-q", 39, 152);
-ctx.beginPath();
-ctx.font="normal 18px Palatino Linotype";
-ctx.fillStyle="black";
-ctx.fillText("P", 160, 90);
-}
-
-function display_Q6() {
-    var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">7. 일직선상에 세 점전하가 간격 d를 두고 놓여 있다. 전하량은 순서대로 1q, -1q, -1q이다. 오른쪽 전하 -1q에 작용하는 힘의 크기를 F라 하면, 가운데 전하 -1q에 작용하는 힘의 크기는 F의 몇 배인가?<br>① 3.67<br>② 2.67<br>③ 4.67<br>④ 5.67<br>⑤ None of the above<br>⑥ All of the above ';
-    q.innerHTML = s+'</p>';
-
-    var cnvs = document.getElementById("canvas");
-    var ctx = cnvs.getContext("2d");
-    ctx.clearRect(0,0, cnvs.width, cnvs.height);
-
-}
-
-function display_Q7() {
-    var q = document.getElementById("Qs");
-    var s = '<font size="3px"> <p style="background-color: #eee;">8. 전하량이 60.0 μC인 점전하가 원점에서부터 (6 î - 4.0 ĵ) m 위치에 놓여 있다. 원점에서부터 (20.0 î + 4 ĵ) m 만큼 떨어진 곳에 이 점전하가 만드는 전기장의 크기를 구하여라. 1/(4πε₀ )=9×10⁹ N⋅m²/C².<br>① 2280<br>② 2980<br>③ 2180<br>④ 2080<br>⑤ None of the above<br>⑥ All of the above ';
+    var s = '<font size="3px"> <p style="background-color: #eee;">6. 균일한 전기장 내에서 전자를 가만히 놓았다. 전자가 7.0 cm를 진행하는 데 3.0×10⁻⁹ 초 걸렸다면 전기장의 세기는 몇 10⁴ N/C인가? 전자 질량=9.11×10⁻³¹ kg, 전하량=1.60×10⁻¹⁹ C.<br>① 8.96<br>② 8.76<br>③ 8.06<br>④ 8.86<br>⑤ None of the above<br>⑥ All of the above ';
     q.innerHTML = s+'</p>';
 
     var cnvs = document.getElementById("canvas");
