@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 7W_Chap2112181854 황수인</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<h1>Homework 7W_Chap2112181854 황수인</h1>
+<table>
+    <tbody>
+        <tr>
+	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
+            <td><textarea id="inputTextToSave" cols="80" rows="8">
+#나, 황수인은(는) 질문에 스스로 해결했음을 선언합니다.
+#I, 황수인, declare that I have answered the questions myself.
+1: 
+2: 
+3: 
+4: 
+5: 
+6: </textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+	<input type="button" onclick="javascript:display_Q0();" value="Q-1" /> &emsp;
+	<input type="button" onclick="javascript:display_Q1();" value="Q-2" /> &emsp;
+	<input type="button" onclick="javascript:display_Q2();" value="Q-3" /> &emsp;
+	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
+	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
+	<input type="button" onclick="javascript:display_Q5();" value="Q-6" /> &emsp;
+	<hr> <div id="Qs"></div>
+    <canvas id="canvas" width="500" height="400">
+</body>
+</head>
+
+<script type="text/javascript">
+function saveTextAsFile() {
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "7W_Chap2112181854.txt"
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+</script>
+<script type="application/javascript">
+function line_arrow(context, fromx, fromy, tox, toy, color, end) {
+    var headlen = 7;
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.beginPath();
+    context.strokeStyle = color;
+    if (end == "last"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+    else if (end=="both"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+}
+    else if (end == "first"){
+    context.moveTo(tox, toy);
+    context.lineTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+    }
+    context.stroke();
+}
+</script>
+
+<script type="application/javascript">
+function display_Q0() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 2개의 원형 회로 A와 B가 아래 그림과 같이 서로 나란히 놓여 있다. 회로 A에는 반시계 방향으로 전류가 흐르고 있는데, 그 전류가 점점 감소할 때 회로 B에 유도되는 전류의 방향을 구하여라. <br> <br>① 시계방향 <br>② 반시계 방향 <br>③ None of the above <br>④ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.ellipse(150,100,100, 30, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="#aaa";
+ctx.lineWidth=3.0;
+ctx.stroke();
+ctx.lineWidth=1;
+ctx.beginPath();
+ctx.ellipse(77,80,5, 4, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="white";
+ctx.fillStyle="white";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(224,80,6, 4, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="white";
+ctx.fillStyle="white";
+ctx.fill();
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(150,60,100, 30, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="black";
+ctx.lineWidth=3.0;
+ctx.stroke();
+ctx.lineWidth=1;
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("A", 260, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("B", 260, 62);
+line_arrow(ctx, 93, 125, 105, 126, "blue", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="blue";
+ctx.fillText("i", 98, 112);
+}
+
+function display_Q1() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. 크기가 0.5 T인 균일한 자기장이 존재하는 공간이 있다. 반지름이 9.0 cm인 원형 회로를 회로의면에 자기장이 수직으로 통과하도록 놓았다. 이 원형 회로를 0.02초 동안에 자기장에 수직한 축을 중심으로 90°만큼 회전시켰다. 회로에 유도되는 평균유도기전력을구하여라.<br>① 0.636<br>② 0.736<br>③ 0.836<br>④ 0.936<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q2() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 아래 그림과 같이 전류가 흐르는 매우 긴 직선 도선 옆에 직사각형 도선이 놓여 있다. 두 도선은 같은 면 위에 놓여 있다. 긴 직선 도선에 흐르는 전류가 감소할 때, 직사각형 도선에 유도되는 전류 방향은? <br> <br>① 시계 방향 <br>② 반시계 방향 <br>③ None of the above <br>④ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.moveTo(100,88);
+ctx.lineTo(300,88);
+ctx.stroke();
+line_arrow(ctx, 210, 88, 190, 88, "blue", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="blue";
+ctx.fillText("i", 200, 105);
+ctx.beginPath();
+ctx.rect(150, 30, 100, 40);
+ctx.strokeStyle="black";
+ctx.stroke();
+}
+
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 아래 그림과 같이 저항이 없는 직사각형 도선이 있고, 크기가 B = 0.7 T로 일정한 자기장이 모든 영역에서 지면에 수직으로 존재한다. 저항이 R = 19 Ω이고 길이가 L = 11.0 cm인 금속막대를 일정한 속력 v = 1.7 m/s로 잡아당기면, 금속막대 양끝 사이의 유도 기전력의 크기는 몇 V인가? <br><br>① 0.141<br>② 0.131<br>③ 0.121<br>④ 0.111<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 30, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 30, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 30, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 30, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 30, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 60, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 60, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 60, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 60, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 60, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 90, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 90, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 90, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 90, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 90, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 120, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 120, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 120, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 120, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 120, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 150, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 150, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 150, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 150, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 150, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 180, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 180, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 180, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 180, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 180, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 210, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 210, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 210, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 210, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 210, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 240, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 240, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 240, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 240, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 240, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 270, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 270, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 270, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 270, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 270, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 300, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 300, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 300, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 300, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 300, 162);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 330, 42);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 330, 72);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 330, 102);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 330, 132);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("×", 330, 162);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("B", 28, 117);
+ctx.beginPath();
+ctx.rect(50, 55, 270, 90);
+ctx.strokeStyle="black";
+ctx.stroke();
+line_arrow(ctx, 290, 55, 290, 145, "black", "both");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("L", 295, 87);
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.lineWidth=3.0;
+ctx.moveTo(140,50);
+ctx.lineTo(140,150);
+ctx.stroke();
+ctx.lineWidth=1;
+line_arrow(ctx, 140, 115, 165, 115, "black", "last");
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("v", 170, 119);
+}
+
+function display_Q4() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. 어떤 솔레노이드의 저항은 13.0 Ω이고 인덕턴스는 0.8 H이다. 이 솔레노이드의 양단에 기전력이 1.5 V인 전지를 연결하였다. 자기장에 저장된 에너지가 평형상태 에너지의 반에 도달하게 되는 시간은 몇 ms인가?<br>① 72.6<br>② 74.6<br>③ 75.6<br>④ 73.6<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q5() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">6. 반지름이 4.0 cm인 긴 솔레노이드에 도선이 1.0 cm에 100번씩 감겨 있다. 이 솔레노이드는 반지름이 25.0 mm인 원형 회로를  둘러싸는 모양으로 놓여 있다. 이 회로와 솔레노이드의 축은 일치한다.솔레노이드에 흐르는 전류가 2.0 A에서 1.0 A까지 20.0 ms 동안 균일하게 감소되었다. 원형 회로에 유도되는 유도 기전력는 몇 mV인가? μ₀ =1.257×10⁻⁶ T⋅m/A<br>① 1.23<br>② 8.23<br>③ 7.23<br>④ 9.23<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+</script>\n</body>\n</html>
