@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework 9W_Chap2212212603 정태랑</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<h1>Homework 9W_Chap2212212603 정태랑</h1>
+<table>
+    <tbody>
+        <tr>
+	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
+            <td><textarea id="inputTextToSave" cols="80" rows="7">
+#나, 정태랑은(는) 질문에 스스로 해결했음을 선언합니다.
+#I, 정태랑, declare that I have answered the questions myself.
+1: 
+2: 
+3: 
+4: 
+5: </textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+	<input type="button" onclick="javascript:display_Q0();" value="Q-1" /> &emsp;
+	<input type="button" onclick="javascript:display_Q1();" value="Q-2" /> &emsp;
+	<input type="button" onclick="javascript:display_Q2();" value="Q-3" /> &emsp;
+	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
+	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
+	<hr> <div id="Qs"></div>
+    <canvas id="canvas" width="500" height="400">
+</body>
+</head>
+
+<script type="text/javascript">
+function saveTextAsFile() {
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "9W_Chap2212212603.txt"
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+</script>
+<script type="application/javascript">
+function line_arrow(context, fromx, fromy, tox, toy, color, end) {
+    var headlen = 7;
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.beginPath();
+    context.strokeStyle = color;
+    if (end == "last"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+    else if (end=="both"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+}
+    else if (end == "first"){
+    context.moveTo(tox, toy);
+    context.lineTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+    }
+    context.stroke();
+}
+</script>
+
+<script type="application/javascript">
+function display_Q0() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 아래 그림과 같이 R = 100의 저항선과 인덕턴스가 L = 0.5 H인 코일이 교류전원에 직렬로 연결되어 있는 RL 회로가 있다. 교류전원의 각주파수가 325 rad/s일 때, 이 회로의 저항에서 소비되는 평균전력이 200 W이라면 교류전원의 유효전압은 몇 V인가? <br><br>① 270<br>② 290<br>③ 280<br>④ 200<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.moveTo(100,90);
+ctx.lineTo(100,50);
+ctx.lineTo(150,50);
+ctx.stroke();
+ctx.beginPath();
+ctx.ellipse(100,100,10, 10, 0, 0, 2*Math.PI, false);
+ctx.strokeStyle="black";
+ctx.stroke();
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("⏦", 90, 106);
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.lineWidth=2.0;
+ctx.moveTo(150,50);
+ctx.lineTo(152,40);
+ctx.lineTo(156,60);
+ctx.lineTo(160,40);
+ctx.lineTo(164,60);
+ctx.lineTo(168,40);
+ctx.lineTo(172,60);
+ctx.lineTo(174,50);
+ctx.stroke();
+ctx.lineWidth=1;
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.moveTo(174,50);
+ctx.lineTo(230,50);
+ctx.lineTo(230,70);
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.arc(230, 78.0, 10, 4.6, 8.8);
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.arc(230.0,90.0,10, 3.6, 8.8);
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.arc(230.0,102.0,10, 3.6, 8.8);
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.arc(230.0,114.0,10,3.84,7.85);
+ctx.stroke();
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.moveTo(230,123);
+ctx.lineTo(230,153);
+ctx.lineTo(100,153);
+ctx.lineTo(100,110);
+ctx.stroke();
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("L", 209, 99);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("R", 159, 74);
+ctx.beginPath();
+ctx.font="italic 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("ℰ(t)", 113, 102);
+}
+
+function display_Q1() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. RLC 회로에 연결된 저항의 저항은 100 Ω, 인덕터의 인덕턴스는 25.0 mH, 축전기의 전기용량은240 μF이다. 이 회로에는 또한 기전력이 17.0 V이고 진동수는 60.0 Hz인 교류전원이 연결되어 있다. 유도 리액턴스는 몇 Ω인가?<br>① 2.42<br>② 3.42<br>③ 9.42<br>④ 1.42<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q2() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 최대전압이 200 V인 교류전원에 50.0 Ω의 저항을 연결하였을 때, 저항에서 열로 소모되는 평균소비전력을 구하여라.<br>① 200<br>② 400<br>③ 300<br>④ 500<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 전기용량이 30.0 μF 축전기를 각진동수 300 rad/s 인 교류전원에 연결하였더니 회로의 최대 전류는 25 mA이다. 교류전원의 최대전압은 몇 V인가?<br>① 2.78<br>② 2.98<br>③ 2.68<br>④ 2.88<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q4() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. RL 회로가 교류전원에 연결되어 있다. 교류전원의 최대전압이 36.0 V이고 저항에 걸리는 최대전압이 12.0 V라면 인덕터 양단에 걸리는 최대전압은 얼마인가?<br>① 43.9<br>② 33.9<br>③ 23.9<br>④ 13.9<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+</script>\n</body>\n</html>
