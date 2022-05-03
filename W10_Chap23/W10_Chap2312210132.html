@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework W10_Chap2312210132 HOSAKA AKINORI_(호사카아키노리)</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<h1>Homework W10_Chap2312210132 HOSAKA AKINORI_(호사카아키노리)</h1>
+<table>
+    <tbody>
+        <tr>
+	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
+            <td><textarea id="inputTextToSave" cols="80" rows="7">
+#나, HOSAKA AKINORI_(호사카아키노리)은(는) 질문에 스스로 해결했음을 선언합니다.
+#I, HOSAKA AKINORI_(호사카아키노리), declare that I have answered the questions myself.
+1: 
+2: 
+3: 
+4: 
+5: </textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+	<input type="button" onclick="javascript:display_Q0();" value="Q-1" /> &emsp;
+	<input type="button" onclick="javascript:display_Q1();" value="Q-2" /> &emsp;
+	<input type="button" onclick="javascript:display_Q2();" value="Q-3" /> &emsp;
+	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
+	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
+	<hr> <div id="Qs"></div>
+    <canvas id="canvas" width="500" height="400">
+</body>
+</head>
+
+<script type="text/javascript">
+function saveTextAsFile() {
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "W10_Chap2312210132.txt"
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+</script>
+<script type="application/javascript">
+function line_arrow(context, fromx, fromy, tox, toy, color, end) {
+    var headlen = 7;
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.beginPath();
+    context.strokeStyle = color;
+    if (end == "last"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+    else if (end=="both"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+}
+    else if (end == "first"){
+    context.moveTo(tox, toy);
+    context.lineTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+    }
+    context.stroke();
+}
+</script>
+
+<script type="application/javascript">
+function display_Q0() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 어떤 광원이 수면 아래 d = 0.9 m의 깊이에 놓여 있다. 이 광원을 수면 위에서 수직으로 관찰할 때 눈에 보이는 겉보기 깊이는 몇  m인가? 단, 물의 굴절률은 n = 4/3이다.<br>① 0.675<br>② 0.695<br>③ 0.605<br>④ 0.685<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q1() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. 길이 L = 3 mm의 짧은 물체가 초점거리 f = 70 mm의 오목거울로부터 거리 a = 190 mm만큼 떨어져 있다. 이 물체의 상의 길이 L"는 몇  mm인가?<br>① 1.85<br>② 1.75<br>③ 1.65<br>④ 1.55<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q2() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 아래 그림과 같이 수영장의 바닥에 박힌 길이가 L 인 막대가 있다. 막대는 수면 위로 h = 0.5 m 솟아나와 있다. 햇빛이 θ = 55°의 각도로 막대를 비춘다. 수영장 바닥에 드리운 막대 그림자의 길이가 x =2.25  m이면 L은 얼마인가? 물의 굴절률은 n = 4/3이다. <br><br>① 2.47<br>② 3.47<br>③ 4.47<br>④ 5.47<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+ctx.beginPath();
+ctx.fillStyle="rgb(150,150,255)";
+ctx.rect(164, 113, 240, 80);
+ctx.fill();
+ctx.beginPath();
+ctx.fillStyle="black";
+ctx.rect(302, 59, 2, 134);
+ctx.fill();
+ctx.beginPath();
+ctx.strokeStyle="black";
+ctx.setLineDash([5,2]);
+ctx.moveTo(302,9);
+ctx.lineTo(302,61);
+ctx.stroke();
+ctx.setLineDash([]);
+line_arrow(ctx, 346, 14, 302, 58, "red", "last");
+ctx.beginPath();
+ctx.strokeStyle="red";
+ctx.setLineDash([5,2]);
+ctx.moveTo(302,58);
+ctx.lineTo(248,112);
+ctx.lineTo(198,192);
+ctx.stroke();
+ctx.setLineDash([]);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("θ", 308, 41);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("L", 331, 137);
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("(n)", 182, 156);
+line_arrow(ctx, 326, 58, 326, 192, "black", "both");
+line_arrow(ctx, 346, 58, 346, 112, "black", "both");
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("h", 352, 91);
+ctx.beginPath();
+ctx.fillStyle="gray70";
+ctx.rect(200, 192, 105, 0);
+ctx.fill();
+ctx.beginPath();
+ctx.font="normal 18px Palatino Linotype";
+ctx.fillStyle="black";
+ctx.fillText("x", 248, 187);
+}
+
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 어떤 렌즈 앞에 물체를 놓았더니 3 배 크기의 실상이 생겼고, 이 물체를 렌즈에서 40 mm 더 멀리하였더니 1.5 배 크기의 실상이 생겼다. 이 렌즈의 초점거리는 몇 mm인가?<br>① 190<br>② 100<br>③ 110<br>④ 120<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q4() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. 어떤 물질 속에서 빛의 진동수가 3.625×10¹⁴ Hz이고 파장이 0.55 μm이다. 이 물질의 굴절률은얼마인가? 진공 내의 광속은 3×10⁸ m/s이다.<br>① 1.50<br>② 1.40<br>③ 1.30<br>④ 1.20<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+</script>\n</body>\n</html>
