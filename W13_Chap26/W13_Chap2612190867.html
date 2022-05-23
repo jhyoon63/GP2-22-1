@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Homework W13_Chap2612190867 김혜민</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<body >
+	<h1>Homework W13_Chap2612190867 김혜민</h1>
+<table>
+    <tbody>
+        <tr>
+	<td><button onclick="saveTextAsFile()">Save<br>Answers<br>to File</button></td>
+            <td><textarea id="inputTextToSave" cols="80" rows="7">
+#나, 김혜민은(는) 질문에 스스로 해결했음을 선언합니다.
+#I, 김혜민, declare that I have answered the questions myself.
+1: 
+2: 
+3: 
+4: 
+5: </textarea></td>
+        </tr>
+    </tbody>
+</table>
+
+	<input type="button" onclick="javascript:display_Q0();" value="Q-1" /> &emsp;
+	<input type="button" onclick="javascript:display_Q1();" value="Q-2" /> &emsp;
+	<input type="button" onclick="javascript:display_Q2();" value="Q-3" /> &emsp;
+	<input type="button" onclick="javascript:display_Q3();" value="Q-4" /> &emsp;
+	<input type="button" onclick="javascript:display_Q4();" value="Q-5" /> &emsp;
+	<hr> <div id="Qs"></div>
+    <canvas id="canvas" width="500" height="400">
+</body>
+</head>
+
+<script type="text/javascript">
+function saveTextAsFile() {
+    var textToSave = document.getElementById("inputTextToSave").value;
+    var textToSaveAsBlob = new Blob([textToSave], {type:"text/plain"});
+    var textToSaveAsURL = window.URL.createObjectURL(textToSaveAsBlob);
+    var fileNameToSaveAs = "W13_Chap2612190867.txt"
+
+    var downloadLink = document.createElement("a");
+    downloadLink.download = fileNameToSaveAs;
+    downloadLink.innerHTML = "Download File";
+    downloadLink.href = textToSaveAsURL;
+    downloadLink.onclick = destroyClickedElement;
+    downloadLink.style.display = "none";
+    document.body.appendChild(downloadLink);
+
+    downloadLink.click();
+}
+
+function destroyClickedElement(event) {
+    document.body.removeChild(event.target);
+}
+</script>
+<script type="application/javascript">
+function line_arrow(context, fromx, fromy, tox, toy, color, end) {
+    var headlen = 7;
+    var dx = tox - fromx;
+    var dy = toy - fromy;
+    var angle = Math.atan2(dy, dx);
+    context.beginPath();
+    context.strokeStyle = color;
+    if (end == "last"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+}
+    else if (end=="both"){
+    context.moveTo(fromx, fromy);
+    context.lineTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+    context.moveTo(tox, toy);
+    context.lineTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+}
+    else if (end == "first"){
+    context.moveTo(tox, toy);
+    context.lineTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle + Math.PI / 6), fromy + headlen * Math.sin(angle + Math.PI / 6));
+    context.moveTo(fromx, fromy);
+    context.lineTo(fromx + headlen * Math.cos(angle - Math.PI / 6), fromy + headlen * Math.sin(angle - Math.PI / 6));
+    }
+    context.stroke();
+}
+</script>
+
+<script type="application/javascript">
+function display_Q0() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">1. 수소 원자의 바닥상태 에너지는 -13.6 eV이다. 3번째 들뜬상태에서 바닥상태로 떨어질 때 방출되는 빛의 진동수는 몇 THz인가? 단, N번째 들뜬 상태의 양자수는 n=(N+1)임에 주의하라. 단, h=4.14×10⁻¹⁵ eV⋅s 이다.<br>① 3180<br>② 3080<br>③ 3280<br>④ 3980<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q1() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">2. 드 브로이 파장이 1.0 cm인 전자의 속력은 몇 m/s인가? 전자질량=9.11×10⁻³¹ kg. 플랑크상수 h=6.626×10⁻³⁴ J⋅s.<br>① 0.0627<br>② 0.0827<br>③ 0.0527<br>④ 0.0727<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q2() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">3. 전자의 속력을 측정한 결과 1.5%의 오차로 속력이 2 Mm/s이었다. 동시에 측정할 수 있는 위치에 대한 오차 범위는 몇 nm인가? 전자질량=9.11×10⁻³¹ kg. 플랑크상수 h=6.626×10⁻³⁴ J⋅s.<br>① 9.93<br>② 8.93<br>③ 1.93<br>④ 7.93<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q3() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">4. 파장이 0.11 nm인 엑스선이 자유전자와 산란하였다. 산란된 파장이 초기 파장의 0.5%만큼 커진 경우 산란각은 몇 도인가? 전자전하량=1.60×10⁻¹⁹ C. 전자질량=9.11×10⁻³¹ kg. 플랑크상수 h=6.626×10⁻³⁴ J⋅s.<br>① 99.4<br>② 19.4<br>③ 29.4<br>④ 39.4<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+function display_Q4() {
+    var q = document.getElementById("Qs");
+    var s = '<font size="3px"> <p style="background-color: #eee;">5. 어떤 금속의 일함수가 0.65 eV이다. 이 금속에 파장이 440 nm인 빛을 쪼였을 때 튀어나오는 전자에 대한 저지전압은 몇 V인가? h=6.626×10⁻³⁴ J⋅s, 전자전하= 1.60×10⁻¹⁹ C, 빛의 속도=3×10⁸ m/s.<br>① 3.17<br>② 5.17<br>③ 2.17<br>④ 4.17<br>⑤ None of the above<br>⑥ All of the above ';
+    q.innerHTML = s+'</p>';
+
+    var cnvs = document.getElementById("canvas");
+    var ctx = cnvs.getContext("2d");
+    ctx.clearRect(0,0, cnvs.width, cnvs.height);
+
+}
+
+</script>\n</body>\n</html>
